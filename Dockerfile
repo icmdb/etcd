@@ -30,7 +30,7 @@ ENV ETCD_NAME=etcd-0 \
     ETCD_OUTPUTS=stderr 
 
 RUN    apk add --update \
-         ca-certificates \
+         ca-certificates 
 
 COPY --from=build /usr/local/bin/etcd    /usr/local/bin/etcd
 COPY --from=build /usr/local/bin/etcdctl /usr/local/bin/etcdctl
