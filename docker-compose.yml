@@ -1,0 +1,24 @@
+version: "3"
+services:
+  etcd:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: etcd
+    hostname: etcd
+    image: icmdb/etcd
+    environment:
+      - ETCD_NAME=etcd-0
+      - ETCD_DATA=/data/
+      - ETCD_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_PEER_URLS=http://0.0.0.0:2380
+      - ETCD_INI_TOKEN=Token
+      - ETCD_INI_STATE=new
+      - ETCD_LOG_LEVEL=info
+      - ETCD_LOGGER=zap
+      - ETCD_OUTPUTS=stderr
+    expose:
+      - 2379
+      - 2380
+    volumes:
+      - ./data/etcd-0:/data
